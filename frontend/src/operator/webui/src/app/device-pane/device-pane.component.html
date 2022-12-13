@@ -1,0 +1,31 @@
+<div
+  class="list-pane-title"
+  style="margin: 10% auto; position: relative; text-align: center"
+>
+  Devices
+  <span id="refresh-list" title="Refresh list" (click)="onRefresh()"
+    >&#8635;</span
+  >
+</div>
+<div>
+  <ul class="devices">
+    <section class="device-list">
+      <li *ngFor="let device of devices | async">
+        <mat-slide-toggle
+          color="primary"
+          [checked]="displaysService.isVisibleDevice(device)"
+          (change)="displaysService.onToggle(device)"
+          >{{ device.deviceId }}</mat-slide-toggle
+        >
+        <button mat-icon-button class="menu" title="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </li>
+    </section>
+  </ul>
+</div>
+<div>
+  <button mat-raised-button class="show-all" (click)="showAll()">
+    Show All
+  </button>
+</div>
